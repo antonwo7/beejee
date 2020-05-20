@@ -33,8 +33,7 @@ class Tasks extends \Controller {
 		$data['tasks'] = \Loader::loadModel('Tasks', 'get_tasks', $args);	
 
 		
-		$data['pages'] = $data['tasks']['count'] / PER_PAGE;
-		if( !is_int($data['pages']) ) $data['pages']++;
+		$data['pages'] = ceil($data['tasks']['count'] / PER_PAGE);
 
 		$data['add_task_action'] = '';
 		$data['edit_task_action'] = \Loader::getUrl('Tasks', 'getTask');
