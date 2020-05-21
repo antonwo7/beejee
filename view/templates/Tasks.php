@@ -24,6 +24,7 @@
 			<th>Email</th>
 			<th>Tasks</th>
 			<th>Status</th>
+			<th></th>
 		</tr>
 		<?php foreach($tasks['list'] as $task){ ?>
 		<tr>
@@ -45,6 +46,14 @@
 			<?php }else{ ?>
 			<td>Undone</td>
 			<?php }?>
+			
+			<td>
+				<div id="edited_<?=$task['id']; ?>">
+				<?php if($task['Edited'] != 0) {?>
+					Edited by Admin
+				<?php }?>
+				</div>
+			</td>
 		</tr>
 		<?php }?>
 	</table>
@@ -111,6 +120,7 @@ function saveTask(id){
 				edit.find('#but-save').removeClass('loading');
 			}else{
 				jQuery('#task_' + id).html(task_text);
+				jQuery('#edited_' + id).html('Edited by Admin');
 				edit.find('#but-save').removeClass('loading');
 				edit.fadeOut(300);
 			}
