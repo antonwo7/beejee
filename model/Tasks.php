@@ -55,7 +55,7 @@ class Tasks{
 	public function save_task($args){
 		global $db;
 		
-		$query_string = "UPDATE tasks SET Task='" . $db->prepare( $args['task'] ) . "' WHERE id='" . $db->prepare( $args['id'] ) . "'";
+		$query_string = "UPDATE tasks SET Task='" . $db->prepare( $args['task'] ) . "', Edited=1 WHERE id='" . $db->prepare( $args['id'] ) . "'";
 		$query = $db->query($query_string);
 	}
 }
